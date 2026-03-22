@@ -921,9 +921,9 @@ const slides = document.querySelectorAll('.slide');
             const newCard = originalCard.cloneNode(true);
             newCard.removeAttribute('id'); 
 
-            const randomRot = (Math.random() * 17 - 10).toFixed(1);
+            const randomRot = (Math.random() * 16 - 8).toFixed(1);
             const randomX = (Math.random() * 30 - 15).toFixed(1);
-            const randomY = (Math.random() * 40 - 15).toFixed(1);
+            const randomY = (Math.random() * 44 - 22).toFixed(1);
 
             newCard.style.setProperty('--rot', `${randomRot}deg`);
             newCard.style.setProperty('--tx', `${randomX}px`);
