@@ -425,6 +425,57 @@
         </div>
 
         <div class="slide">
+            <header><h2>III. RADGRAPH-XL DATASET</h2></header>
+            <h3 class="subtitle">Data Construction & USE Processing</h3>
+            <div class="content full-width" style="display: flex; flex-direction: column; gap: 40px; align-items: center; perspective: 1000px;"> <div style="display: flex; align-items: center; justify-content: center; gap: 30px; background: rgba(255,255,255,0.03); padding: 30px 50px; border-radius: 15px; border: 1px dashed var(--text-dim); width: 90%;">
+                    
+                    <div style="font-family: 'Courier New', Courier, monospace; font-size: 20px; color: var(--accent); line-height: 1.6;">
+                        "Clear lungs..."<br>
+                        "Faint scarring found..."<br>
+                        ...
+                    </div>
+
+                    <svg width="60" height="40" viewBox="0 0 60 40">
+                        <path d="M0,15 L35,15 L35,0 L60,20 L35,40 L35,25 L0,25 Z" fill="#f59e0b"/>
+                    </svg>
+
+                    <div style="position: relative; width: 140px; height: 140px; margin: 0 20px;">
+                        <div style="position: absolute; bottom: 0; left: 0; width: 110px; height: 110px; background: #f59e0b; border: 2px solid #b45309; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: bold; color: #1e293b; z-index: 3;">
+                            USE
+                        </div>
+                    </div>
+
+                    <svg width="60" height="40" viewBox="0 0 60 40">
+                        <path d="M0,15 L35,15 L35,0 L60,20 L35,40 L35,25 L0,25 Z" fill="#f59e0b"/>
+                    </svg>
+
+                    <div style="font-family: 'Courier New', Courier, monospace; font-size: 20px; color: var(--text); line-height: 1.6;">
+                        [0.2, 0.1, 0.5, ...]<br>
+                        [0.3, 0.2, 0.8, ...]<br>
+                        ...
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; width: 95%;">
+                    <div class="text-side">
+                        <h4 style="color: var(--accent); margin-bottom: 15px; font-size: 24px;">Dataset Expansion</h4>
+                        <ul style="margin: 0; padding-left: 20px;">
+                            <li><span class="highlight">Modalities:</span> Chest X-ray + <br> Chest CT, Abd/Pelvis CT, Brain MRI <br> Stanford Hospital data added</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="text-side">
+                        <h4 style="color: var(--accent); margin-bottom: 15px; font-size: 24px;"><br></h4>
+                        <ul style="margin: 0; padding-left: 20px;">
+                            <li><span class="highlight">Total Annotations:</span> 406,141 Expert annotations</li>
+                            <li><span class="highlight">Measurement:</span> 3,297 added</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide">
             <header>
                 <h2>III. RADGRAPH-XL DATASET</h2>
             </header>
