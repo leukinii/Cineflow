@@ -187,6 +187,31 @@
             transform: scale(1.05);
             box-shadow: 0 0 20px rgba(255,255,255,0.2);
         }
+        /* --- 8번 슬라이드 버튼 호버(Hover) & 네온 효과 --- */
+        #btn-takeaway-1, #btn-takeaway-2, #btn-takeaway-3 {
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+        }
+        
+        /* 1번 버튼: 초록색 빛 */
+        #btn-takeaway-1:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.4);
+            background-color: rgba(16, 185, 129, 0.05);
+        }
+        
+        /* 2번 버튼: 파란색 빛 */
+        #btn-takeaway-2:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(129, 140, 248, 0.4);
+            background-color: rgba(129, 140, 248, 0.05);
+        }
+        
+        /* 3번 버튼: 노란색 빛 */
+        #btn-takeaway-3:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(245, 158, 11, 0.4);
+            background-color: rgba(245, 158, 11, 0.05);
+        }
 
         /* --- 문장 토큰 인터랙티브 CSS --- */
         .interactive-sentence {
@@ -361,6 +386,17 @@
                 box-shadow: 0 8px 15px rgba(0,0,0,0.25); 
             }
         }
+
+        #btn-entity:active, 
+        #btn-relation:active, 
+        #btn-takeaway-1:active, 
+        #btn-takeaway-2:active, 
+        #btn-takeaway-3:active {
+            transform: scale(0.96); /* 원래 크기보다 살짝 작아지게 축소 */
+            box-shadow: 0 5px 10px rgba(0,0,0,0.4); /* 눌렸으니 그림자도 줄어들게 처리 */
+            transition: transform 0.1s ease, box-shadow 0.1s ease; /* 들어갈 때는 빠르게! */
+        }
+        
     </style>
 </head>
 <body>
@@ -426,7 +462,7 @@
 
         <div class="slide">
             <header><h2>III. RADGRAPH-XL DATASET</h2></header>
-            <h3 class="subtitle">Data Construction & USE Processing</h3>
+            <h3 class="subtitle">Data Construction & USE Processing<br></h3>
             <div class="content full-width" style="display: flex; flex-direction: column; gap: 40px; align-items: center; perspective: 1000px;"> <div style="display: flex; align-items: center; justify-content: center; gap: 30px; background: rgba(255,255,255,0.03); padding: 30px 50px; border-radius: 15px; border: 1px dashed var(--text-dim); width: 90%;">
                     
                     <div style="font-family: 'Courier New', Courier, monospace; font-size: 20px; color: var(--accent); line-height: 1.6;">
@@ -510,7 +546,7 @@
                         <div id="table-placeholder" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; border: 2px dashed var(--text-dim); border-radius: 12px; color: var(--text-dim); font-size: 20px;">
                         </div>
 
-                        <div id="table-entity" class="info-table" style="background: var(--bg); border: 2px solid var(--accent); border-radius: 12px; padding: 30px;">
+                        <div id="table-entity" class="info-table" style="background: rgba(15, 23, 42, 0.95); border: 2px solid var(--accent); border-radius: 12px; padding: 30px;">
                             <h4 style="margin: 0 0 20px 0; color: var(--accent); font-size: 24px; text-align: center; border-bottom: 2px solid var(--text-dim); padding-bottom: 15px;">Entity Classification</h4>
                             <table style="width: 100%; font-size: 20px; color: var(--text); border-collapse: collapse;">
                                 <tr>
@@ -525,7 +561,7 @@
                             </table>
                         </div>
 
-                        <div id="table-relation" class="info-table" style="background: var(--bg); border: 2px solid #818cf8; border-radius: 12px; padding: 30px;">
+                        <div id="table-relation" class="info-table" style="background: rgba(15, 23, 42, 0.97); border: 2px solid #818cf8; border-radius: 12px; padding: 30px;">
                             <h4 style="margin: 0 0 20px 0; color: #818cf8; font-size: 24px; text-align: center; border-bottom: 2px solid var(--text-dim); padding-bottom: 15px;">Relation Types</h4>
                             <table style="width: 100%; font-size: 20px; color: var(--text); border-collapse: collapse;">
                                 <tr>
@@ -562,20 +598,6 @@
                         right lung base
                         <span class="ann-tooltip top">Anatomy definitely present</span>
                     </span>
-                </div>
-            </div>
-        </div>
-
-        <div class="slide">
-            <header><h2>III. RADGRAPH-XL DATASET</h2></header>
-            <h3 class="subtitle">Data Construction & Sampling</h3>
-            <div class="content">
-                <div class="text-side">
-                    <ul>
-                        <li><span class="highlight">Data Sources:</span><br> MIMIC-CXR + new Stanford Hospital data <br> Chest CT, Abdomen/Pelvis CT, Brain MRI</li>
-                        <li><span class="highlight">Sampling Strategy:</span><br> Sampled evenly to balance disease proportions and report lengths</li>
-                        <li><span class="highlight">Semantic Extraction:</span><br> Utilized USE (Universal Sentence Encoder) <br> 2,300 reports</li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -700,7 +722,7 @@
                 </div>
 
                 <div style="font-size: 24px; line-height: 1.6; color: var(--text);">
-                    <p style="margin-bottom: 20px;">The model showed excellent results on completely different fields, such as <span class="highlight">ultrasound data</span></p>
+                    <p style="margin-bottom: 20px;">The model showed good results on completely different fields, such as <span class="highlight">ultrasound data</span></p>
                     
                     <div style="background: rgba(16, 185, 129, 0.05); border-left: 3px solid var(--accent); padding: 25px 30px; border-radius: 0 12px 12px 0;">
                         <strong style="color: var(--accent); font-size: 26px;">Error Example:</strong><br>
@@ -716,9 +738,9 @@
             </header>
             <h3 class="subtitle">Summary of Achievements<br><br><br></h3>
             <div class="content full-width" style="display: flex; align-items: center; justify-content: center; height: 100%; padding-bottom: 50px;">
-                <blockquote style="position: relative; font-size: 40px; line-height: 1.6; font-style: italic; color: var(--text); border-left: 3px solid var(--accent); padding-left: 150px; margin: 0 80px; text-align: left; background: rgba(255,255,255,0.05); padding: 40px 60px; border-radius: 0 20px 20px 0;">
+                <blockquote style="position: relative; font-size: 36px; line-height: 1.7; font-style: italic; color: var(--text); border-left: 3px solid var(--accent); padding-left: 120px; margin: 0 60px; text-align: left; background: rgba(255,255,255,0.05); padding: 40px 60px; border-radius: 0 20px 20px 0;">
                     <span style="font-size: 120px; font-family: serif; color: var(--accent); position: absolute; top: -20px; left: -10px; opacity: 0.3;"></span>
-                    By utilizing <span class="highlight">2,300 carefully sampled reports</span> and over <span class="highlight">410,000 highly accurate expert annotations</span>, we successfully developed a high-performing AI model for structuring radiology reports.
+                    "We introduce RadGraph-XL, a large-scale dataset of <span class="highlight">2,300 radiology reports</span> with over <span class="highlight">410,000 expert annotations</span>... Results demonstrate that our model surpasses previous methods by up to <span class="highlight">52%</span> ...<br> foster further innovation and research in structured clinical information extraction."
                     <span style="font-size: 120px; font-family: serif; color: var(--accent); position: absolute; bottom: -80px; right: 20px; opacity: 0.3;"></span>
                 </blockquote>
             </div>
@@ -749,6 +771,67 @@
                         <br><br>
                         The failure to completely filter out <span style="color: #f59e0b; font-weight:bold;">outliers</span> indicates that the dataset still contains some noise
                     </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="slide">
+            <header>
+                <h2>VIII. MY TAKEAWAYS</h2>
+            </header>
+            <h3 class="subtitle">Insights & Critical Thinking</h3>
+            
+            <div class="content full-width">
+                <div class="concept-container" style="display: flex; align-items: center; justify-content: center; gap: 80px; width: 100%; height: 100%;">
+                    
+                    <div style="display: flex; flex-direction: column; gap: 40px;">
+                        <div class="concept-box" id="btn-takeaway-1" style="cursor: pointer; border-color: var(--accent); padding: 20px 40px; font-size: 28px;">
+                            1. Beyond Images
+                        </div>
+                        <div class="concept-box" id="btn-takeaway-2" style="cursor: pointer; border-color: #818cf8; padding: 20px 40px; font-size: 28px;">
+                            2. Open-Source
+                        </div>
+                        <div class="concept-box" id="btn-takeaway-3" style="cursor: pointer; border-color: #f59e0b; padding: 20px 40px; font-size: 28px;">
+                            3. Pre-training Bias?
+                        </div>
+                    </div>
+
+                    <svg width="60" height="200" viewBox="0 0 60 200">
+                        <defs>
+                            <marker id="arrow-takeaway" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                                <path d="M0,0 L0,8 L8,4 z" fill="var(--text-dim)" />
+                            </marker>
+                        </defs>
+                        <path d="M10,100 L50,100" stroke="var(--text-dim)" stroke-width="4" fill="none" marker-end="url(#arrow-takeaway)" stroke-dasharray="5,5" />
+                    </svg>
+
+                    <div style="position: relative; width: 450px; height: 350px;">
+                        <div id="takeaway-placeholder" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; border: 2px dashed var(--text-dim); border-radius: 12px; color: var(--text-dim); font-size: 20px;">
+                        </div>
+
+                        <div id="card-takeaway-1" class="info-table" style="background: rgba(15, 23, 42, 0.95); border: 3px solid var(--accent); border-radius: 12px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+                            <h4 style="margin: 0 0 15px 0; color: var(--accent); font-size: 26px; border-bottom: 2px solid rgba(16, 185, 129, 0.3); padding-bottom: 10px;">1. Text as Foundation</h4>
+                            <div style="font-size: 22px; line-height: 1.6; color: var(--text);">
+                                Great significance lies in focusing on the <span style="color: var(--accent); font-weight:bold;">foundational text</span> (reports) to extract clinical context, moving beyond solely relying on image-based diagnostics.
+                            </div>
+                        </div>
+
+                        <div id="card-takeaway-2" class="info-table" style="background: rgba(15, 23, 42, 0.97); border: 3px solid #818cf8; border-radius: 12px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+                            <h4 style="margin: 0 0 15px 0; color: #818cf8; font-size: 26px; border-bottom: 2px solid rgba(129, 140, 248, 0.3); padding-bottom: 10px;">2. Community Impact</h4>
+                            <div style="font-size: 22px; line-height: 1.6; color: var(--text);">
+                                Accelerates medical AI research by making this massive, expert-annotated dataset and model <span style="color: #818cf8; font-weight:bold;">publicly available</span> (Open-Source).
+                            </div>
+                        </div>
+
+                        <div id="card-takeaway-3" class="info-table" style="background: rgba(15, 23, 42, 0.97); border: 3px solid #f59e0b; border-radius: 12px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+                            <h4 style="margin: 0 0 15px 0; color: #f59e0b; font-size: 26px; border-bottom: 2px solid rgba(245, 158, 11, 0.3); padding-bottom: 10px;">3. Data Leakage?</h4>
+                            <div style="font-size: 22px; line-height: 1.6; color: var(--text);">
+                                Is the high performance of baseline partly due to its <span style="color: #f59e0b; font-weight:bold;">prior exposure</span> to <span style="color: #f59e0b; font-weight:bold;">CXP</span> during the pre-training phase?
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -838,9 +921,9 @@ const slides = document.querySelectorAll('.slide');
             const newCard = originalCard.cloneNode(true);
             newCard.removeAttribute('id'); 
 
-            const randomRot = (Math.random() * 20 - 10).toFixed(1);
+            const randomRot = (Math.random() * 17 - 10).toFixed(1);
             const randomX = (Math.random() * 30 - 15).toFixed(1);
-            const randomY = (Math.random() * 30 - 15).toFixed(1);
+            const randomY = (Math.random() * 40 - 15).toFixed(1);
 
             newCard.style.setProperty('--rot', `${randomRot}deg`);
             newCard.style.setProperty('--tx', `${randomX}px`);
@@ -875,6 +958,21 @@ const slides = document.querySelectorAll('.slide');
         if(btnEntity && btnRelation) {
             btnEntity.addEventListener('click', () => throwCard(tblEntity, tblPlaceholder));
             btnRelation.addEventListener('click', () => throwCard(tblRelation, tblPlaceholder));
+        }
+
+        // --- 8번 슬라이드 My Takeaways 이벤트 할당 ---
+        const btnTk1 = document.getElementById('btn-takeaway-1');
+        const btnTk2 = document.getElementById('btn-takeaway-2');
+        const btnTk3 = document.getElementById('btn-takeaway-3');
+        const tkPlaceholder = document.getElementById('takeaway-placeholder');
+        const cardTk1 = document.getElementById('card-takeaway-1');
+        const cardTk2 = document.getElementById('card-takeaway-2');
+        const cardTk3 = document.getElementById('card-takeaway-3');
+
+        if(btnTk1 && btnTk2 && btnTk3) {
+            btnTk1.addEventListener('click', () => throwCard(cardTk1, tkPlaceholder));
+            btnTk2.addEventListener('click', () => throwCard(cardTk2, tkPlaceholder));
+            btnTk3.addEventListener('click', () => throwCard(cardTk3, tkPlaceholder));
         }
     </script>
 </body>
