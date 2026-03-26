@@ -44,7 +44,34 @@
             flex-direction: column;
         }
 
-        .slide.active { display: flex; }
+        /* --- 슬라이드 안의 구성물들이 시간차를 두고 후루룩! 나타나는 효과 --- */
+        @keyframes fadeInSlide {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 1. 슬라이드 껍데기 자체는 그냥 보이게만 켜둠 (애니메이션 제거) */
+        .slide.active { 
+            display: flex; 
+        }
+
+        /* 2. 슬라이드 안의 모든 직계 자식(header, subtitle, content 등)들에게 공통 적용 */
+        .slide.active > * {
+            opacity: 0; /* 처음엔 투명하게 대기 */
+            animation: fadeInSlide 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        /* 3. 각 순번(nth-child)마다 출발 시간(animation-delay)을 다르게 줌! */
+        .slide.active > *:nth-child(1) { animation-delay: 0.05s; }  /* 제목 등장 */
+        .slide.active > *:nth-child(2) { animation-delay: 0.25s; } /* 부제목 등장 */
+        .slide.active > *:nth-child(3) { animation-delay: 0.4s; }  /* 메인 콘텐츠 등장 */
+        .slide.active > *:nth-child(4) { animation-delay: 0.5s; } /* 요소가 더 있다면! */
 
         header {
             height: var(--header-h);
@@ -290,7 +317,7 @@
 
         #finding-box {
             position: absolute; top: 30%; left: -10%; 
-            background: rgba(15, 23, 42, 0.95); border: 3px solid var(--accent);
+            background: rgba(15, 23, 42, 0.9); border: 3px solid var(--accent);
             color: var(--text); padding: 15px 25px; border-radius: 12px;
             font-size: 20px; font-weight: 700; text-align: center;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
@@ -316,7 +343,7 @@
         /* #finding-box 를 .finding-card 로 변경! */
         .finding-card {
             position: absolute; top: 30%; left: -10%; 
-            background: rgba(15, 23, 42, 0.95); border: 3px solid var(--accent);
+            background: rgba(15, 23, 42, 0.7); border: 3px solid var(--accent);
             color: var(--text); padding: 15px 25px; border-radius: 12px;
             font-size: 20px; font-weight: 700; text-align: center;
             opacity: 0; pointer-events: none; transform-origin: center;
@@ -873,6 +900,7 @@ const slides = document.querySelectorAll('.slide');
         }
 
         // --- 공통 카드 던지기 로직 (2번, 5번 슬라이드 모두 사용) ---
+
         let cardZIndex = 10;
 
         function throwCard(originalCard, placeholderEl) {
